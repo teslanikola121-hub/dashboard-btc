@@ -1,1 +1,33 @@
 readme
+
+docker run --rm \
+  -v /system/media/script/market/dashboard:/workspace \
+  -w /workspace \
+  node:20-alpine \
+  sh -c "npx create-next-app@latest next-temp --typescript --tailwind --eslint --app --use-npm --no-src-dir"
+
+
+
+  cd /system/media/script/market/dashboard
+
+cp -r next-temp/. .
+rm -rf next-temp
+
+
+chmod +x setup-dashboard.sh
+./setup-dashboard.sh
+
+docker exec -it dashboard npm install lucide-react
+
+docker compose restart
+
+
+
+
+
+
+
+
+
+
+
